@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { supabase } from "./supabaseClient";
+import { supabase } from "./utils/supabaseClient";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -95,15 +95,19 @@ const ProductDetail = () => {
 
         {/* Thông tin chi tiết */}
         <div style={{ flex: "1 1 300px" }}>
-          <h2 style={{ marginBottom: "10px" }}>{product.title}</h2>
+          <h2 style={{ marginBottom: "10px" }}>
+            {product.title || product.name}
+          </h2>
+
           <p
             style={{ fontSize: "1.2rem", color: "#e63946", fontWeight: "bold" }}
           >
-            ${product.price}
+            {product.price.toLocaleString("vi-VN")}₫
           </p>
 
+          {/* Không có rating trong DB → hiển thị mặc định */}
           <p style={{ marginTop: "10px", color: "#555" }}>
-            ⭐ {product.rating_rate} ({product.rating_count} đánh giá)
+            ⭐ Chưa có đánh giá
           </p>
 
           <p
@@ -114,7 +118,7 @@ const ProductDetail = () => {
               textAlign: "justify",
             }}
           >
-            {product.description || "Chưa có mô tả cho sản phẩm này."}
+            {product.name}
           </p>
 
           <button

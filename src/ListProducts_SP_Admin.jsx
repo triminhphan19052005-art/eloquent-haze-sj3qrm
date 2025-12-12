@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "./supabaseClient";
+import { supabase } from "./supabaseClient"; // ✔ sửa lại đường dẫn
 import { useNavigate } from "react-router-dom";
 import "./assets/css/quanlysp.css";
 
@@ -12,6 +12,7 @@ const ListProducts_SP_Admin = () => {
       .from("product1")
       .select("*")
       .order("id", { ascending: true });
+
     if (error) console.error("Lỗi:", error.message);
     else setProducts(data);
   };
@@ -23,6 +24,7 @@ const ListProducts_SP_Admin = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Bạn có chắc muốn xóa sản phẩm này không?")) {
       const { error } = await supabase.from("product1").delete().eq("id", id);
+
       if (error) alert("Lỗi khi xóa: " + error.message);
       else fetchProducts();
     }
@@ -42,8 +44,6 @@ const ListProducts_SP_Admin = () => {
 
         <div>
           <h2>Quản lý sản phẩm (Admin)</h2>
-
-          {/* Nút thêm mới trên đầu bảng */}
 
           <table className="product-table">
             <thead>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "./supabaseClient";
+import { supabase } from "./supabaseClient"; // ✔ sửa đường dẫn
 import { useNavigate, useParams } from "react-router-dom";
 import "./assets/css/quanlysp.css";
 
@@ -34,6 +34,7 @@ const EditProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (isNew) {
       const { error } = await supabase.from("product1").insert([product]);
       if (error) return alert("Lỗi thêm: " + error.message);
@@ -43,9 +44,11 @@ const EditProduct = () => {
         .from("product1")
         .update(product)
         .eq("id", id);
+
       if (error) return alert("Lỗi cập nhật: " + error.message);
       alert("✅ Đã cập nhật sản phẩm!");
     }
+
     navigate("/admin/products");
   };
 
@@ -91,7 +94,7 @@ const EditProduct = () => {
             </label>
 
             <label>
-              Đánh giá (0–5):
+              Đánh giá (0-5):
               <input
                 type="number"
                 step="0.1"
