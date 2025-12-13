@@ -1,9 +1,9 @@
 import "./assets/css/main.css";
 import anhlogo from "./assets/images/logo.png";
-import { Outlet, Link, useNavigate } from "react-router-dom"; // Đảm bảo bạn sử dụng Link thay vì a
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const Layout = () => {
+function Layout() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
@@ -34,13 +34,15 @@ const Layout = () => {
                   <Link to="/egov">EGOV</Link>
                 </li>
                 <li>
-                  <Link to="/admin/manage-products">QUẢN TRỊ</Link>
+                  <Link to="/admin/products">QUẢN TRỊ</Link>
                 </li>
               </ul>
             </div>
+
             <div id="logo" className="logo-container">
               <img src={anhlogo} alt="Logo" className="logo-small" />
             </div>
+
             <div id="divtimkiem" className="search-container">
               <input
                 type="text"
@@ -49,15 +51,19 @@ const Layout = () => {
               />
             </div>
           </div>
+
           <div id="menubar" className="menubar">
             <div className="menubar-left">
-              {/* Sửa đường dẫn sản phẩm */}
-              <Link to="/productpage/1" className="menu-item">
+              {/* SẢN PHẨM = TRANG CHỦ */}
+              <Link to="/" className="menu-item">
                 Sản Phẩm
               </Link>
+
+              {/* PHỤ KIỆN */}
               <Link to="/accessories" className="menu-item">
                 Phụ Kiện
               </Link>
+
               <Link to="/promotions" className="menu-item">
                 Khuyến Mãi
               </Link>
@@ -88,6 +94,7 @@ const Layout = () => {
       <footer></footer>
     </div>
   );
-};
+}
 
 export default Layout;
+
