@@ -1,5 +1,3 @@
-// Sửa ngày 4/11/2025 vì fix lỗi không truy cập được trang quản trị Admin
-
 import React from "react";
 import { Navigate } from "react-router-dom";
 

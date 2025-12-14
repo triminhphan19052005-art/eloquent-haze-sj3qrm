@@ -71,9 +71,7 @@ const Accessories: React.FC = () => {
           <div>
             <h3>{item.name}</h3>
             <p>{item.description}</p>
-            <p style={styles.price}>
-              {item.price.toLocaleString("vi-VN")} ₫
-            </p>
+            <p style={styles.price}>{item.price.toLocaleString("vi-VN")} ₫</p>
             <button onClick={() => addToCart(item)}>Thêm vào giỏ</button>
           </div>
         </div>
@@ -88,9 +86,7 @@ const Accessories: React.FC = () => {
           <span>
             {item.name} × {item.quantity}
           </span>
-          <span>
-            {(item.price * item.quantity).toLocaleString("vi-VN")} ₫
-          </span>
+          <span>{(item.price * item.quantity).toLocaleString("vi-VN")} ₫</span>
           <button onClick={() => removeFromCart(item.id)}>X</button>
         </div>
       ))}
@@ -103,9 +99,7 @@ const Accessories: React.FC = () => {
               {totalPrice.toLocaleString("vi-VN")} ₫
             </span>
           </h3>
-          <button onClick={() => setShowCheckout(true)}>
-            Thanh toán
-          </button>
+          <button onClick={() => setShowCheckout(true)}>Thanh toán</button>
         </>
       )}
 
@@ -180,6 +174,3 @@ const styles: { [key: string]: React.CSSProperties } = {
     gap: 10,
   },
 };
-
-
-
